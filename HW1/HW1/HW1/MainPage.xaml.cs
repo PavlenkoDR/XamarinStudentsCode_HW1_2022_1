@@ -46,7 +46,6 @@ namespace HW1
                     items.Remove(i);
                     break;
                 }
-                
             }
         }
 
@@ -65,6 +64,48 @@ namespace HW1
                     await DisplayAlert("Successeful", "Order description", "Ok");
                 }
             }
+        }
+
+        private void HardUpdateItemsContaier()
+        {
+            BindableLayout.SetItemsSource(items_container, null);
+            BindableLayout.SetItemsSource(items_container, items);
+        }
+
+        private void Button_Clicked_2(object sender, EventArgs e)
+        {
+            var button = sender as Button;
+            foreach (Item i in items)
+            {
+                if (i.item_id.ToString() == button.ClassId)
+                {
+                    i.UpdateCount(i.item_count - 1);
+                    if (i.item_count == 0)
+                    {
+                        items.Remove(i);
+                    }
+                    break;
+                }
+            }
+            HardUpdateItemsContaier();
+        }
+
+        private void Button_Clicked_3(object sender, EventArgs e)
+        {
+            var button = sender as Button;
+            foreach (Item i in items)
+            {
+                if (i.item_id.ToString() == button.ClassId)
+                {
+                    i.UpdateCount(i.item_count + 1);
+                    if (i.item_count == 0)
+                    {
+                        items.Remove(i);
+                    }
+                    break;
+                }
+            }
+            HardUpdateItemsContaier();
         }
     }
 }
