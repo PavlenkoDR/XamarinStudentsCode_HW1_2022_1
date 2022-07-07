@@ -62,7 +62,7 @@ namespace HW1
                 if (result)
                 {
                     items.Clear();
-                    await DisplayAlert("Successeful", "Order description", "Ok");
+                    await DisplayAlert("Successful", "Order description", "Ok");
                 }
             }
         }
